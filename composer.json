@@ -1,0 +1,19 @@
+{
+	"name": "baglerit/envariable",
+	"description": "Adds an Artisan command, envariable:encrypt, which adds an encrypted variable to the .env file.",
+	"require": {
+		"laravel/framework": "~5.0"
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Dave Bagler",
+			"email": "dave@baglerit.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"BaglerIT\\EnVariableCommand\\": "src/"
+		}
+	}
+}
