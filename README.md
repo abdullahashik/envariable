@@ -20,11 +20,22 @@ protected $commands = [
 ];
 ```
 
-## Usage Examples
+## Decryption Examples
 Here are two examples of ways you may want to access environment variables.
 
 ### With Crypt Facade
+Here's how you can decrypt the variables if you are loading the environment variable where you are able to use the 
+<code>Crypt</code> facade.
 
+```php
+use Illuminate\Support\Facades\Crypt;
+...
+try {
+    return Crypt::decrypt(env('VAR_NAME'));
+} catch(DecryptException $e) {
+    ...
+}
+```
 
 ### Without Crypt Facade
 My environment variables are often used by files within my Laravel project's <code>config</code> folder such as 
