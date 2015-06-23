@@ -21,16 +21,32 @@ protected $commands = [
 ```
 
 ## Usage Examples
-
+Here are two examples of ways you may want to access environment variables.
 
 ### With Crypt Facade
 
 
 ### Without Crypt Facade
+My environment variables are often used by files within my Laravel project's <code>config</code> folder such as 
+<code>config/auth.php</code> and <code>config/database.php</code>. Unfortunately the <code>Crypt</code> facade is not available
+within config files so you will need to create a new <code>Encrypter</code> object.
+
+```php
+$crypt = new Illuminate\Encryption\Encryper(env('APP_KEY'));
+...
+'mysql' => [
+   'driver'    => 'mysql',
+   'host'      => $crypt->decrypt(env('DB_HOST')),
+   'database'  => $crypt->decrypt(env('DB_DATABASE')),
+   'username'  => $crypt->decrypt(env('DB_USERNAME')),
+   'password'  => $crypt->decrypt(env('DB_PASSWORD')),
+   'port'      => $crypt->decrypt(env('DB_PORT')),
+   ...
+```
 
 ## Warnings
 * Make sure you decrypt your encrypted environment variables before using them in your application.
-* This command does not check if the environment variable already exists so please check your .env file to ensure you 
+* This command does not check if the environment variable already exists so please check your <code>.env</code> file to ensure you 
 have not created duplicate variables.
 * This command encrypts data but stores it in the same file as the encryption key so it isn't a substitute for existing 
 security best practises. I wrote this command because I needed to encrypt an app token in order to meet a third-party 
