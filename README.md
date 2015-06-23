@@ -31,7 +31,7 @@ Here's how you can decrypt the variables if you are loading the environment vari
 use Illuminate\Support\Facades\Crypt;
 ...
 try {
-    return Crypt::decrypt(env('VAR_NAME'));
+    $value = Crypt::decrypt(env('VAR_NAME'));
 } catch(DecryptException $e) {
     ...
 }
