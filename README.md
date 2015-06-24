@@ -38,7 +38,7 @@ try {
 ```
 
 ### Without Crypt Facade
-(Thanks to @bobbybouwmann, for helping with this.)
+(Thanks to [https://github.com/bobbybouwmann](@bobbybouwmann), for helping with this.)
 My environment variables are often used by files within my Laravel project's <code>config</code> folder such as 
 <code>config/auth.php</code> and <code>config/database.php</code>. Unfortunately the <code>Crypt</code> facade is not available
 within config files so you will need to create a new <code>Encrypter</code> object.
